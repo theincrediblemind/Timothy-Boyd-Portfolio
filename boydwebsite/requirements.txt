@@ -1,0 +1,10 @@
+flask
+gunicorn
+cryptography
+flask-socketio
+eventlet==0.30.2
+Flask-Failsafe
+mysql-connector-python
+IMDbPY==2021.4.18
+PyMovieDb
+scikit-learn

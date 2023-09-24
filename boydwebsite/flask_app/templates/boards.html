@@ -1,0 +1,152 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='projboard/board.css') }}">
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ url_for('static', filename='projboard/board.js') }}" defer></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket;
+    $(document).ready(function(){
+        
+        socket = io.connect('http://' + document.domain + ':' + location.port + '/boardchat');
+        socket.on('connect', function() {
+            socket.emit('joined', {});
+        });
+
+        var allButtons = document.querySelectorAll('input[class^=submit-button]');
+
+        for (var i = 0; i < allButtons.length; i++) {
+          allButtons[i].addEventListener('click', function() {
+            let cardnum = (this.id.charAt(this.id.length - 1));
+            socket.emit('update', {update : document.getElementById("card" + String(Number(cardnum) + 2)).textContent, cardnumber : String(Number(cardnum) + 2)})
+          });
+        }
+        
+        socket.on('status', function(data) {     
+            let tag  = document.createElement("p");
+            let text = document.createTextNode(data.msg);
+            let element = document.getElementById("chat");
+            tag.appendChild(text);
+            tag.style.cssText = data.style;
+            element.appendChild(tag);
+            $('#chat').scrollTop($('#chat')[0].scrollHeight);
+
+            let send = document.getElementById("message");
+            send.addEventListener("keypress", function(event){
+              if (event.key === "Enter")
+              {
+                let user_name = document.getElementById('user-name').innerHTML + ": ";
+                socket.emit('message', {message : user_name + document.getElementById("message").value});
+              }
+
+          });
+
+            let send_button = document.getElementById("send-message");
+            send_button.addEventListener('click', function(event){
+                let user_name = document.getElementById('user-name').innerHTML + ": ";
+                socket.emit('message', {message : user_name + document.getElementById("message").value});
+          });
+        });
+        
+        socket.on('update_board', function(data) {
+          let tag  = document.createElement("p");
+          let text = document.createTextNode(data.msg.substring(0,data.msg.indexOf('>')));
+          let element = document.getElementById("card" + data.msg.charAt(data.msg.length - 1));
+          tag.appendChild(text);
+          tag.style.cssText = data.style;
+          element.appendChild(tag);
+          
+      });
+      
+      
+    });
+</script>
+{% endblock %}
+
+{% block maincontent %}
+<div id='project-board'>
+  <h3>Board</h3>
+    <div class="board-category">
+        <p>To Do</p>
+        <div class="task-card">
+          <p>Task 1</p>
+          <div class="card-content" id="card1">
+          </div>
+          <div class="button-holder">
+            <input type="submit" value="Edit" class="button" id="edit-button1" onclick="editCard(this.id)"/>
+            <input type="submit" value="Submit" class="submit-button" id="send-button1" onclick="submitCard(this.id)"/>
+          </div>
+        </div>
+        <br>
+        <div class="task-card">
+          <p>Task 2</p>
+          <div class="card-content" id="card2">
+          </div>
+          <div class="button-holder">
+            <input type="submit" value="Edit" class="button" id="edit-button2" onclick="editCard(this.id)"/>
+            <input type="submit" value="Submit" class="submit-button" id="send-button2" onclick="submitCard(this.id)"/>
+          </div>
+        </div>
+    </div>
+    <div class="board-category">
+      <p>Doing</p>
+      <div class="task-card">
+        <p>Task 1</p>
+        <div class="card-content" id="card3">
+        </div>
+        <div class="button-holder">
+          <input type="submit" value="Edit" class="button" id="edit-button3" onclick="editCard(this.id)"/>
+          <input type="submit" value="Submit" class="submit-button" id="send-button3" onclick="submitCard(this.id)"/>
+        </div>
+      </div>
+      <br>
+      <div class="task-card">
+        <p>Task 2</p>
+        <div class="card-content" id="card4">
+        </div>
+        <div class="button-holder">
+          <input type="submit" value="Edit" class="button" id="edit-button4" onclick="editCard(this.id)"/>
+          <input type="submit" value="Submit" class="submit-button" id="send-button4" onclick="submitCard(this.id)"/>
+        </div>
+      </div>
+    </div>
+    <div class="board-category">
+      <p>Completed</p>
+      <div class="task-card">
+        <p>Task 1</p>
+        <div class="card-content" id="card5">
+        </div>
+        <div class="button-holder">
+          <input type="submit" value="Edit" class="button" id="edit-button5" onclick="editCard(this.id)"/>
+          <input type="submit" value="Submit" class="submit-button" id="send-button5" onclick="submitCard(this.id)"/>
+        </div>
+      </div>
+      <br>
+      <div class="task-card">
+        <p>Task 2</p>
+        <div class="card-content" id="card6">
+        </div>
+        <div class="button-holder">
+          <input type="submit" value="Edit" class="button" id="edit-button6" onclick="editCard(this.id)"/>
+          <input type="submit" value="Submit" class="submit-button" id="send-button6" onclick="submitCard(this.id)"/>
+        </div>
+      </div>
+    </div>
+</div>
+<br>
+<div id="chat-holder">
+  <p>Chat</p>
+  <p id="user-name">{{user}}</p>
+  <div id='chat' contenteditable>
+  </div>
+  <div class="email">
+    <input id='message' placeholder="Enter Your Message Here" />
+    <input type="submit" value="Send" id="send-message"/>
+  </div>
+</div>
+
+{% endblock %}

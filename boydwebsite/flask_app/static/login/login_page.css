@@ -1,0 +1,33 @@
+.login-signup{
+    display: flex;
+}
+
+.login-form{
+    justify-content: left;
+}
+.login-form-field {
+    border: none;
+    border-bottom: 1px solid #3a3a3a;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    outline: none;
+    padding: 0px 0px 5px 5px;
+  }
+  
+  #login-form-submit {
+    width: 30%;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #3a3a3a;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .fail-display{
+    display: none;
+    width: 100vw;
+    color: red;
+}

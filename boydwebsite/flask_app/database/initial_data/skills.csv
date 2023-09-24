@@ -1,0 +1,9 @@
+skill_id,experience_id,name,skill_level
+1,1,'SQL',7
+2,1,'Python',8
+3,2,'Grafana',5
+4,2,'Kibana',7
+5,3,'Problem Solving',9
+6,3,'Collaboration',8
+7,4,'Data Processing',7
+8,5,'Data Analysis',8

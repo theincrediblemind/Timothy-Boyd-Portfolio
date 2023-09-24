@@ -1,0 +1,93 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+
+<body>
+  <section class="hero">
+    <h1>Welcome to Movie Recommendations</h1>
+    <p>Discover the best movies and get personalized recommendations.</p>
+    <form id="movie-form">
+      <input type="text" name = "movie" id="movie-name" placeholder="Enter a movie title">
+      <button type="submit">Search</button>
+    </form>
+    <script>
+      // Connect to the Socket.IO server
+      const socket = io();
+    
+      document.getElementById('movie-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const movieName = document.getElementById('movie-name').value;
+        
+        // Emit a 'movie' event with the movie name
+        socket.emit('movie', { movie_name: movieName }); // Emit the event with the movie name
+      });
+    </script>
+  </section>
+
+  
+  <section id="recommendations" class="hidden">
+    <div id="search-results"></div>
+  </section>
+  
+  <script>  
+    // Receive search results from Python emit
+    socket.on('search_results', function(results) {
+      const searchResultsContainer = document.getElementById('search-results');
+  
+      // Clear previous search results
+      searchResultsContainer.innerHTML = '';
+  
+      // Create the label for the searched movie
+      const searchedMovie = results[0];
+      const label = document.createElement('h3');
+      label.textContent = `Results for: ${searchedMovie.title}`;
+      searchResultsContainer.appendChild(label);
+  
+      // Create the movie card for the searched movie
+      const searchedMovieCard = createMovieCard(searchedMovie);
+      searchResultsContainer.appendChild(searchedMovieCard);
+  
+      // Create the label for similar movies
+      const similarMoviesLabel = document.createElement('h3');
+      similarMoviesLabel.textContent = 'Similar Movies';
+      searchResultsContainer.appendChild(similarMoviesLabel);
+  
+      // Create movie cards for similar movies
+      for (let i = 1; i < results.length && i <= 4; i++) {
+        const similarMovie = results[i];
+        const similarMovieCard = createMovieCard(similarMovie);
+        searchResultsContainer.appendChild(similarMovieCard);
+      }
+    });
+  
+    // Helper function to create a movie card element
+    function createMovieCard(movie) {
+      const movieCard = document.createElement('div');
+      movieCard.className = 'movie-card';
+  
+      const movieImage = document.createElement('img');
+      movieImage.src = movie.image;
+      movieImage.alt = movie.title;
+  
+      const movieTitle = document.createElement('h3');
+      movieTitle.textContent = movie.title;
+  
+      const movieDescription = document.createElement('p');
+      movieDescription.textContent = movie.description;
+  
+      movieCard.appendChild(movieImage);
+      movieCard.appendChild(movieTitle);
+      movieCard.appendChild(movieDescription);
+  
+      return movieCard;
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2023 Movie Recommendations. All rights reserved.</p>
+  </footer>
+
+</body>
+
+{% endblock %}

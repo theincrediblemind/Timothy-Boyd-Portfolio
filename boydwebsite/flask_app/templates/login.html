@@ -1,0 +1,93 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='login/login_page.css') }}">
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+
+{% block maincontent %}
+<br><br>
+<h3 id="fail-count" class="fail-display">Incorrect Username or password! Failed Login Count: </h3>
+<div class="login-signup">
+    <div class="login-form">
+        <h1>Login Below</h1>
+        <input type="text" name="email" id="username-field-log" class="login-form-field" placeholder="Email">
+        <input type="password" name="password" id="password-field-log" class="login-form-field" placeholder="Password">
+        <br>
+        <input type="submit" value="Login" id="login-form-submit" onclick="checkCredentials()"/>
+    </div>
+    <div class="signup-form">
+        <h1>Signup Below</h1>
+        <form class="form">            
+            <input type="text" name="email" id="username-field-sign" class="login-form-field" placeholder="Email">
+            <input type="password" name="password" id="password-field-sign" class="login-form-field" placeholder="Password">
+            <br>
+            <input type="submit" value="Signup" id="login-form-submit" onclick="signUp()"/>
+        </form>
+    </div>
+</div>
+<script>
+let count = 0;
+var initial_fail = document.getElementById('fail-count').innerHTML;
+function checkCredentials() {
+    // package data in a JSON object
+    var data_d = {'email': document.getElementById('username-field-log').value, 'password': document.getElementById('password-field-log').value}
+    console.log('data_d', data_d);
+
+    // SEND DATA TO SERVER VIA jQuery.ajax({})
+    jQuery.ajax({
+        url: "/processlogin",
+        data: data_d,
+        type: "POST",
+        success:function(returned_data){
+              returned_data = JSON.parse(returned_data);
+              tester = returned_data['success'];
+              if (returned_data['success'] == 1)
+              {
+                window.location.href = "/home";
+              }
+              else
+              {
+                count += 1;
+                document.getElementById('fail-count').innerHTML = initial_fail + count;
+                document.getElementById('fail-count').style.display = "inline";
+              }
+            },
+    });
+    console.log(tester)
+}
+
+function signUp() {
+    // package data in a JSON object
+    var data_d = {'email': document.getElementById('username-field-sign').value, 'password': document.getElementById('password-field-sign').value}
+    console.log('data_d', data_d);
+
+    // SEND DATA TO SERVER VIA jQuery.ajax({})
+    jQuery.ajax({
+        url: "/processnewuser",
+        data: data_d,
+        type: "POST",
+        success:function(returned_data){
+              returned_data = JSON.parse(returned_data);
+              tester = returned_data['success'];
+              if (returned_data['success'] == 1)
+              {
+                window.location.href = "/home";
+              }
+              else
+              {
+                document.getElementById('fail-count').innerHTML = "That username is already taken!";
+                document.getElementById('fail-count').style.display = "inline";
+              }
+            },
+    });
+    console.log(tester)
+}
+</script>
+{% endblock %}
+
+

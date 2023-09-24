@@ -1,0 +1,11 @@
+footer 
+{
+    justify-content: center;
+    text-align: center;
+}
+
+
+footer > h3 {
+    justify-content: center;
+    color: darkgreen;
+}

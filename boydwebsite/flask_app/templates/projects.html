@@ -1,0 +1,36 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+<div id="mainHeader">
+    <h1>Below is a list of web projects I worked on:</h1>
+    <p>Click an image, or hyperlink in the description to learn more.</p>
+</div>
+<hr>
+<div class="projectDisplay">
+    <img src="../static/main/images/piano.jpeg" alt="Picture of piano">
+    <div class ="displayBox">
+        <p><h2>Javascript Piano</h2> As part of my first homework assignment in CSE 477, I developed an interactive piano built purely in HTML, CSS, and Javascript. This tool (in addition to my webpage) highlight my ability to build beautiful (and mobile-friendly) front-end applications <a href="piano">Click here to see and play!</a></span>
+    </div>
+</div>
+<div class="projectDisplay">
+    <img src="../static/main/images/interface.jpg" alt="Picture of system diagram">
+    <div class ="displayBox">
+        <p><h2>Project Management Board</h2> As part of my final assignment in CSE 477, I developed an interactive project management board built purely in HTML, CSS, and Javascript on the front-end. It requires a sign up and login to use showcasing my ability to create and maintain easily usable and secure databases. It also features a real time chat system. This tool (in addition to my webpage) highlights my ability to build full stack web applications <a href="boards">Click here to access the board!</a></span>
+    </div>
+</div>
+<div class="projectDisplay">
+    <img src="../static/main/images/a picture for a 1.png" alt="Picture of movie poster">
+    <div class ="displayBox">
+        <p><h2>Movie recommendations</h2> I have developed a Movie Recommendation App that allows users to explore a wide range of movies based on their preferences. With the app, users can easily search for movies, view detailed information such as ratings, plot summaries, and cast members, and receive personalized movie recommendations. <a href="movies">Click here to find some movies!</a></span>
+    </div>
+</div>
+
+<div class="projectDisplay">
+    <img src="../static/main/images/stocks.jfif" alt="Picture of stocks">
+    <div class ="displayBox">
+        <p><h2>Live Stock Tracker</h2> I have developed a live stock tracking app. With this application, users can add stocks to watch to a list and receive live updates with data vizualization <a href="stocks">Click here to view stocks!</a></span>
+    </div>
+</div>
+<hr>
+<h2 id="moreComing"> More coming soon! </h2>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+    <h1 id="thanksTag">Thanks for your feedback! Here's what others had to say:</h1>    
+    {% for customer in feedback_structure %}
+        <ul id="list">
+            <li>{{customer['name']}} - {{customer['comment']}}</li> 
+        </ul>    
+
+    {% endfor %}
+
+{% endblock %}

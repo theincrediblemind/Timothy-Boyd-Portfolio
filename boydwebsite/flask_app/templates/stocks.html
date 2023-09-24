@@ -1,0 +1,61 @@
+{% extends 'shared/layout.html' %}
+{% block maincontent %}
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body id="stock-body">
+    <h1 id="stock-title">Stock Tracker</h1>
+    <form id = "stock-form">
+      <input type="text" id="stockSymbol" placeholder="Enter stock symbol">
+      <button id="start-visualization" type="submit" onclick="visualizeStock()">Track Stock</button>
+    </form>
+    <div id="chart"></div>
+  
+    <script>
+
+      function visualizeStock() {
+        // Get user input
+        const socket = io();
+        const stockName = document.getElementById('stockSymbol').value;
+
+        document.getElementById("stock-form").addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission        
+        // Emit a 'movie' event with the movie name
+        socket.emit('stock', { stock_symbol: stockName }); // Emit the event with the movie name
+      });
+
+    
+   
+        // Generate data visualization based on selected timeframe
+        // You can use Plotly.js library to create interactive charts
+        // Example code to create a basic line chart:
+      socket.on('results', function(results) {
+        console.log(results);
+        var data = [
+          {
+            x: Object.values(results).map(entry => entry.date),
+            y: Object.values(results).map(entry => entry.price), 
+            type: 'line',
+            line: {
+              color: 'green' // Set the line color to green
+           }
+          }
+        ];
+  
+        var layout = {
+          title: String(stockName),
+          xaxis: {
+            title: 'Date'
+          },
+          yaxis: {
+            title: 'Price'
+          }
+        };
+  
+        Plotly.newPlot('chart', data, layout);
+
+    });
+    
+      }
+    </script>
+  </body>
+{% endblock %}

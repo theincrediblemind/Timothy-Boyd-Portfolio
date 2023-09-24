@@ -1,0 +1,42 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+    <div id="resume">
+      <!-- For each institution - generate a row --> 
+      {% for inst_id, inst in resume_data.items() %}
+      <!-- Do something... -->
+      <h1> {{ inst['name']}} </h1> 
+      <p id="city"> {{ inst['city']}}, {{ inst['state'] }} </p>
+        {% if inst['positions'] != {} %}
+          {% for pos_id, pos in inst['positions'].items() %}
+            <!-- Do something else... -->
+            <div> 
+              <h3>{{ pos['title']}} </h3> 
+              <p id="responsibilities"> {{ pos['responsibilities'] }} </p>
+              <p id="dates"> {{pos['start_date']}} - {{pos['end_date']}} </p>
+            </div>
+            {% if pos['experiences'] != {} %}
+              {% for exp_id, exp in pos['experiences'].items() %}
+                <ul id="experiences">
+                  <li> {{ exp['name'] }}: {{ exp['description'] }}</li>
+                {% if 'skills' in exp%}
+                  {% for skill_id, skill in exp['skills'].items() %}
+                    <ul id="skills">
+                      <li> {{ skill['name'] }} : {{ ('\u2B50') * skill['skill_level'] }} </li>
+                    </ul>
+                  {% endfor %}
+                {% endif %}
+                </ul>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+      <hr>
+      {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+

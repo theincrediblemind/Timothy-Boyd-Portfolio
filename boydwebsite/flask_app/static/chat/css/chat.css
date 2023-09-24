@@ -1,0 +1,8 @@
+#chat{
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+#user-name{
+    display: none;
+}

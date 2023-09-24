@@ -1,0 +1,6 @@
+.banner {
+    object-fit: cover;
+    width: 100vw;
+    height: 15vh;
+    display: block;
+}

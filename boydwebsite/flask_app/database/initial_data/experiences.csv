@@ -1,0 +1,6 @@
+experience_id,position_id,name,description,hyperlink,start_date,end_date
+1,1,'Development','Automating infrastructure and deployment processes; optimizing performance and efficiency through code reviews and system analysis.',NULL,'2022-12-19','2021-08-07'
+2,1,'Monitoring','Designing and implementing monitoring systems; conducting proactive monitoring and alerting; and analyzing system metrics and logs to identify and resolve issues in real-time.',NULL,'2022-12-19','2021-08-07'
+3,1,'Troubleshooting','Identifying and resolving technical issues; investigating root causes of incidents; collaborating with cross-functional teams to troubleshoot and resolve complex problems; implementing preventive measures to mitigate future issues; and continuously improving systems and processes to enhance overall reliability and performance.',NULL,'2022-12-19','2021-08-07'
+4,2,'Data Processing','Created python script to process time study data and determine machine bottlenecks',NULL,'2021-05-17','2021-08-07'
+5,2,'Time Studies','Monitored part fabrication stations and measured timing of each part cycle',NULL,'2021-05-17','2021-08-07'

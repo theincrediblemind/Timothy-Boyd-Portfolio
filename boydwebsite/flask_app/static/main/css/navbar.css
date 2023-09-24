@@ -1,0 +1,45 @@
+h1, h2, p {
+    margin: 0;
+}
+
+nav {
+    background-color : rgb(26, 32, 31);
+    color : white;
+    height: 12.5vh;
+    width: 100vw
+}
+
+nav > h1, h2 {
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+h1 > a
+{
+    display: inline-block;
+    text-align: center;
+    padding-left: 5%;
+    color :white;
+    font-size:x-large;
+    text-decoration: none;
+    
+}
+
+a > img {
+    display:block;
+    width: 30px;
+  }
+
+a:hover{
+    opacity: 0.5;
+}
+
+#firstlink {
+    display: inline-block;
+    text-align: center;
+    padding-left: 25%;
+    color :white;
+    font-size:x-large;
+
+}

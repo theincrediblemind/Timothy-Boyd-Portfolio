@@ -1,0 +1,59 @@
+#stock-body {
+font-family: Arial, sans-serif;
+background-color: #f4f4f4;
+margin: 0;
+padding: 20px;
+}
+
+#stock-title {
+color: #000;
+text-align: center;
+}
+
+#stockSymbol {
+padding: 10px;
+font-size: 16px;
+width: 200px;
+}
+
+#start-visualization {
+padding: 10px 20px;
+font-size: 16px;
+background-color: green;
+color: #fff;
+border: none;
+cursor: pointer;
+}
+
+#chart {
+width: 100%;
+height: 400px;
+}
+
+#chart .plotly {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+  
+  #chart .plotly .xy .x .ticktext,
+  #chart .plotly .xy .y .ticktext {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  #chart .plotly .xy .x .title,
+  #chart .plotly .xy .y .title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #chart .plotly .xy .y .ticktext:nth-child(2) {
+    color: #3f51b5;
+  }
+  
+  #chart .plotly .xy .y .ticktext:last-child {
+    color: #f44336;
+  }
+  
