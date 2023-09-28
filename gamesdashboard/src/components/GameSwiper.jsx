@@ -46,6 +46,20 @@ function GameSwiper({games}) {
                 <SwiperSlide key={game._id}>
                     <div className="gameSlider">
                         <img src={game.img} alt={`${game.title}`}></img>
+                        <div className={`video ${active ? 'active' : undefined}`}>
+                        <iframe width="1280" height="720" 
+                        src={`${game.trailer}?autoplay=1&mute=1`} 
+                        title={game.title} 
+                        frameborder="0" 
+                        allow="accelerometer; 
+                        autoplay; 
+                        clipboard-write; 
+                        encrypted-media; 
+                        gyroscope; 
+                        picture-in-picture; 
+                        web-share" allowfullscreen
+                        ></iframe>
+                        </div>
                         <div className="content">
                             <h2 className="title">{game.title}</h2>
                             <p className="description">{game.description}</p>
