@@ -9,6 +9,14 @@ function Home({games}) {
             <div className="row">
                 <GameSwiper games={games}/>
             </div>
+            <div className="row">
+                <div className="col-lg-6">
+                    <h2 className="sectionTitle">Games on Promotion</h2>
+                </div>
+                <div className="col-lg-6 d-flex justify-content-end align-items-center">
+                   <a href="#" className="viewMore"> View More Games <i className="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
     </section>
     )
