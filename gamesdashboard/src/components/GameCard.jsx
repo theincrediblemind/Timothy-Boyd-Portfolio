@@ -17,7 +17,7 @@ function GameCard({game}) {
             <div className="gameTitle mt-4 mb-3">{game.title}</div>
             <div className="gamePrice">
                 {
-                    game.discount !=0 &&(
+                    game.discount !== 0 &&(
                         <>
                         <span className="discount">
                             <i>{game.discount*100}%</i>
