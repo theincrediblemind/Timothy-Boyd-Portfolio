@@ -3,39 +3,39 @@ const filterListData = [
     {
         _id: crypto.randomUUID(),
         name: 'All',
-        active: 'true'
+        active: true
     },
 
     {
         _id: crypto.randomUUID(),
         name: 'RPG',
-        active: 'false'
+        active: false
     },
 
 
     {
         _id: crypto.randomUUID(),
         name: 'MOBA',
-        active: 'false'
+        active: false
     },
 
 
     {
         _id: crypto.randomUUID(),
         name: 'Battle',
-        active: 'false'
+        active: false
     },
 
     {
         _id: crypto.randomUUID(),
         name: 'Racing',
-        active: 'false'
+        active: false
     },
 
     {
         _id: crypto.randomUUID(),
         name: 'Fighting',
-        active: 'false'
+        active: false
     }
 ]
 

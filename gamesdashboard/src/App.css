@@ -12,6 +12,8 @@
  --primary: #0d171f;
  --second: #0998a8;
  --bgcolor: #192938;
+ --boxShadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 h1, h2, h4, p
