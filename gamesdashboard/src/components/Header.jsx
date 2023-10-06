@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AppContext } from '../App';
 import './header.css';
 import userImage from '../images/testAvi.jpg';
 
 function Header({toggleActive}) {
+   const {library} = useContext(AppContext)
   return (
     <header>
         <a href="#" className="menu" onClick={toggleActive}><i className="bi bi-sliders"></i></a>
         <div className="userItems">
             <a href="#" className="icon">
                 <i className="bi bi-heart-fill"></i>
-                <span className="like">0</span>
+                <span className="like">{library.length}</span>
                 </a>
             <a href="#" className="icon">
                 <i className="bi bi-bag-fill"></i>

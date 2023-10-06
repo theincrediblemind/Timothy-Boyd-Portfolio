@@ -3,7 +3,7 @@ const socialListData = [
         _id: crypto.randomUUID(),
         target: 'facebook',
         icon: 'bi-meta',
-        active: 'true'
+        active: true
     
     },
     
@@ -11,7 +11,7 @@ const socialListData = [
         _id: crypto.randomUUID(),
         target: 'twitter',
         icon: 'bi-twitter-x',
-        active: 'false'
+        active: false
     
     },
     
@@ -19,7 +19,7 @@ const socialListData = [
         _id: crypto.randomUUID(),
         target: 'youtube',
         icon: 'bi-youtube',
-        active: 'false'
+        active: false
     
     },
     
@@ -27,7 +27,7 @@ const socialListData = [
         _id: crypto.randomUUID(),
         target: 'share',
         icon: 'bi-share',
-        active: 'false'
+        active: false
     
     }
     

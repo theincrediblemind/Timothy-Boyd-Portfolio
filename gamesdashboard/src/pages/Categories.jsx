@@ -28,12 +28,15 @@ function Categories({games, reference, sectionActive}) {
     };
 
     const [text, setText] = useState('');
+
+    
     const gameSearch=(e)=>
     {
-        console.log(e.target.value);
         setText(e.target.value);
         setData(games.filter(game=>(game.title.toLowerCase().includes(e.target.value.toLowerCase()))));
     }
+
+    
 
 
   return (
