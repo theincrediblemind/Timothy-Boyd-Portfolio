@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Backend.Services;
+using Backend.Interfaces;
 
 namespace Backend.Controllers;
 
@@ -7,11 +8,16 @@ namespace Backend.Controllers;
 [Route("api/[controller]")]
 public class IGDBController : ControllerBase
 {
-    private readonly IGDBService _igdbService;
+    private readonly IIGDBService _igdbService;
+    private readonly IAuthenticationService _authenticationService;
+
+    private readonly IConfiguration _configuration;
     
-    public IGDBController(IGDBService iGDBService)
+    public IGDBController(IIGDBService iGDBService, IAuthenticationService authenticationService, IConfiguration configuration)
     {
         _igdbService = iGDBService;
+        _authenticationService = authenticationService;
+        _configuration = configuration;
     }
 
     [HttpGet("getGameData")]
@@ -19,7 +25,8 @@ public class IGDBController : ControllerBase
     {
         try
         {
-            var gameData = await _igdbService.GetGameDataAsync();
+            var accessToken = await _authenticationService.GetAccessToken(_configuration["IGDB:ClientId"], _configuration["IGDB:ClientSecret"]);
+            var gameData = await _igdbService.GetGameData(accessToken, _configuration["IGDB:ClientId"]);
             return Ok(gameData);
         }
 
