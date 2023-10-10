@@ -1,0 +1,19 @@
+.loading-spinner {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Take up the entire viewport height */
+    background-color: rgba(30, 19, 41, 0.9); /* Semi-transparent background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999; /* Ensure it's above other content */
+}
+
+.loadingText {
+    margin-bottom: 20px; /* Adjust spacing between text and spinner */
+    color: white; /* Text color */
+}

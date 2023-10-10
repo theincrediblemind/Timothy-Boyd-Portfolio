@@ -22,6 +22,16 @@ builder.Services.AddHttpClient<IIGDBService, IGDBService>( client =>
 
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -40,5 +50,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("CorsPolicy");
+
 
 app.Run();

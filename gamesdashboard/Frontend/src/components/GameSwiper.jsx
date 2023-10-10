@@ -45,7 +45,7 @@ function GameSwiper({games}) {
         {
             games.map(game=>(
                 <SwiperSlide>
-                    <GameSlide key={game._id} game={game} active={active} toggleVideo={toggleVideo}/>
+                    <GameSlide key={game.checksum} game={game} active={active} toggleVideo={toggleVideo}/>
                 </SwiperSlide>
 
             ))

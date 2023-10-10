@@ -21,7 +21,7 @@ function Home({games, reference}) {
             <div className="row">
                 {
                     games.slice(0,4).map(game=>(
-                        <GameCard key={game._id} game={game}/>
+                        <GameCard key={game.checksum} game={game}/>
                     ) //get items 0, 1, 2, 3 
                ) }
             </div>

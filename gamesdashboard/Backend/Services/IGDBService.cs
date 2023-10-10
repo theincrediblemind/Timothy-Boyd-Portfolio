@@ -21,7 +21,7 @@ public async Task<IActionResult> GetGameData(string access_token, string cl)
 {
     try
     {
-        var limit = 100;
+        var limit = 30;
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
         var response = await _httpClient.GetAsync($"games?fields=checksum,name,summary,genres,aggregated_rating,videos,cover,game_modes&limit={limit}");
         response.EnsureSuccessStatusCode();
@@ -73,7 +73,7 @@ private async Task<List<string>> GetEndpointList(int[] endpointIds, string endpo
 
     foreach (var endpointId in endpointIds)
     {
-        var response = await _httpClient.GetAsync($"{endpointName}?id={endpointId}&fields=name");
+        var response = await _httpClient.GetAsync($"{endpointName}?id={endpointId}&fields=name&limit={30}");
         response.EnsureSuccessStatusCode();
         var endpointData = await response.Content.ReadFromJsonAsync<List<GameDataItem>>();
 
@@ -96,7 +96,7 @@ private async Task<string> GetEndpointUrl(int endpointId, string endpointName)
     var endpointUrl = "";
 
 
-    var response = await _httpClient.GetAsync($"{endpointName}?id={endpointId}&fields=url");
+    var response = await _httpClient.GetAsync($"{endpointName}?id={endpointId}&fields=url&limit={30}");
     response.EnsureSuccessStatusCode();
     var endpointData = await response.Content.ReadFromJsonAsync<List<GameDataItem>>();
 

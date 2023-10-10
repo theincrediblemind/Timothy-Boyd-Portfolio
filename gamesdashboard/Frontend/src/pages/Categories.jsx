@@ -24,7 +24,7 @@ function Categories({games, reference, sectionActive}) {
                 return;
             }
 
-            setData(games.filter(game=>(game.category === category)));
+            setData(games.filter(game=>(game.genreNames[0] === category)));
     };
 
     const [text, setText] = useState('');
@@ -33,7 +33,7 @@ function Categories({games, reference, sectionActive}) {
     const gameSearch=(e)=>
     {
         setText(e.target.value);
-        setData(games.filter(game=>(game.title.toLowerCase().includes(e.target.value.toLowerCase()))));
+        setData(games.filter(game=>(game.name.toLowerCase().includes(e.target.value.toLowerCase()))));
     }
 
     
@@ -63,7 +63,7 @@ function Categories({games, reference, sectionActive}) {
             <div className="row">  
                 {
                     data.map(game=>(
-                        <GameCard key={game._id} game={game}/>
+                        <GameCard key={game.checksum} game={game}/>
                     ))
                 }
             </div>

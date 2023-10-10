@@ -26,6 +26,10 @@ namespace Backend.Models
 
         public string coverUrl {get; set;}
 
+        public double discount = 0.0;
+
+        public double price = 60;
+
         
         // Add more properties to match the actual data returned by IGDB
     }

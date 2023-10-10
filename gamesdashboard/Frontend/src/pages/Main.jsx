@@ -7,11 +7,13 @@ import Home from './Home';
 import Categories from './Categories';
 import Library from './Library';
 import Bag from './Bag';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function Main() {
     const {library, bag} = useContext(AppContext);
     const [active, setActive] = useState(false);
     const [games, setGames] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const homeRef = useRef();
     const categoriesRef = useRef();
@@ -50,32 +52,50 @@ function Main() {
         setActive(!active);
     };
 
-    const sectionActive=(target)=>
-    {
-        sections.map(section=>
-            {
-                section.ref.current.classList.remove('active');
-                if (section.ref.current.id === target)
-                {
-                    section.ref.current.classList.add('active')
+    const sectionActive = (target) => {
+        sections.forEach((section) => {
+          const currentRef = section.ref.current;
+          if (currentRef) {
+            currentRef.classList.remove('active');
+            if (currentRef.id === target) {
+              currentRef.classList.add('active');
+            }
+          }
+        });
+      };
+
+      const getGameData = () => {
+        fetch('http://localhost:5250/api/IGDB/getGameData')
+          .then((res) => {
+            if (!res.ok) {
+                if (res.status === 429) {
+                    // Handle 429 error by waiting and retrying
+                    const retryAfter = parseInt(res.headers.get('Retry-After')) || 10; // Default to 10 seconds
+                    setTimeout(getGameData, retryAfter * 1000); // Retry after the specified delay
                 }
-                return section;
-            })
-    }
-
-    const getGameData=()=>
-    {
-        fetch('http://localhost:3000/api/gamesData.json')
-        .then(res=>res.json())
-        .then(data=>{
-            setGames(data)
-        })
-        .catch(e=> console.log(e.message))
-    }
-
-    useEffect(()=>{
-        getGameData();
-    }, [])
+                else{
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+            }
+            return res.json();
+          })
+          .then((data) => {
+            console.log('Response Data:', data);
+            setGames(data.value);
+            setLoading(false); // Set loading to false after data is fetched
+          })
+          .catch((error) => {
+            console.error('Fetch Error:', error);
+            setLoading(false); // Set loading to false on error as well
+          });
+      };
+    
+      useEffect(() => {
+        if (loading) {
+          getGameData();
+        }
+      }, [loading]); // Empty dependency array to run this effect only once
+    
 
   return (
     <main>
@@ -83,14 +103,19 @@ function Main() {
         <div className={`banner ${active ? 'active' : undefined}`}>
             <Header toggleActive={toggleActive}/>
             <div className="container-fluid">
-            {games && games.length > 0 && (
+            {games && games.length > 0 ? (
                 <>
                     <Home games={games} reference={homeRef}/>
-                    <Categories games = {games} reference={categoriesRef}/>
+                    <Categories games={games} reference={categoriesRef}/>
                     <Library games={library} reference={libraryRef}/>
                     <Bag games={bag} reference={bagRef}/>
                 </>
-                )}
+            ) : (
+                // What to render when games.length is not greater than 0
+                <div className="loading">
+                    <LoadingSpinner/>
+                </div>
+            )}
             </div>
         </div>
     </main>
