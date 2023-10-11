@@ -19,7 +19,7 @@ Welcome to my portfolio! Here, you can explore a collection of my projects and e
 - **Description**: A simple to-do list application. Keep track of your tasks, mark them as completed, and delete them when you're done.
 - **Demo Coming Soon**: [To-Do List](#) (Add a link to project here)
 
-### 4. Game Dashboard (Separate Website)
+### 4. Game Dashboard (Current Project - Separate Website)
 
 - **Description**: An interactive game dashboard that allows you to add items to your cart, manage your game library, and browse available games. Currently a frontend project with plans for backend API integration and user login/authentication.
 - **Demo Coming Soon**: [Game Dashboard](#) (Add a link to project here)
@@ -28,9 +28,9 @@ Welcome to my portfolio! Here, you can explore a collection of my projects and e
 
 I have exciting plans for the future. Here are some upcoming features and improvements:
 
-- **Backend API Integration**: I'm working on implementing a backend API for the game dashboard to enhance the functionality of my projects and enable data storage and retrieval. This will use a game API to access a large selection of games.
+- **Backend API Integration**: GamesDashboard: I'm working on implementing a backend API for the game dashboard to enhance the functionality of my projects and enable data storage and retrieval. This will use a game API to access a large selection of games.
 
-- **User Login and Authentication**: I plan to add user login and authentication features to provide a personalized experience for users and secure access to certain project features.
+- **User Login and Authentication**: Game Dashboard: I plan to add user login and authentication features to provide a personalized experience for users and secure access to certain project features.
 
 - **More Projects**: I'm constantly working on new projects and experiments. Stay tuned for even more exciting additions to my portfolio.
 
