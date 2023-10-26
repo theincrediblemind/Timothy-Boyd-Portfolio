@@ -1,0 +1,9 @@
+# Add User Authentication - use Java
+# Don't show games with age rating to users younger
+# Add checkout capabilities
+# Add a My games section for purchased games
+# Add Balance to users
+# Add checkout using balance
+# Add optional play button to cards that have "playable" boolean set to true (none yet)
+# Create simple tetris style game
+# Add tetris game to dashboard and allow playing from play button

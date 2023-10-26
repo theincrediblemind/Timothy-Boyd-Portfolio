@@ -24,7 +24,7 @@ function Categories({games, reference, sectionActive}) {
                 return;
             }
 
-            setData(games.filter(game=>(game.genreNames[0] === category)));
+            setData(games.filter(game=>(game.genre=== category)));
     };
 
     const [text, setText] = useState('');

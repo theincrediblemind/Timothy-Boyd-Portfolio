@@ -19,11 +19,12 @@ function Home({games, reference}) {
                 </div>
             </div>
             <div className="row">
-                {
-                    games.slice(0,4).map(game=>(
-                        <GameCard key={game.checksum} game={game}/>
-                    ) //get items 0, 1, 2, 3 
-               ) }
+                {    games ?(
+                        games.slice(0,4).map(game=>(
+                            <GameCard key={game.checksum} game={game}/>
+                        ) //get items 0, 1, 2, 3 
+                )) : (<h1>Waiting for games</h1>)
+                }
             </div>
         </div>
     </section>

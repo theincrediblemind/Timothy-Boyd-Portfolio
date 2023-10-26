@@ -67,6 +67,7 @@ function Main() {
       const getGameData = () => {
         fetch('http://localhost:5250/api/IGDB/getGameData')
           .then((res) => {
+            console.log(res.status)
             if (!res.ok) {
                 if (res.status === 429) {
                     // Handle 429 error by waiting and retrying
