@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\Backend.csproj": {}
+    "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\API\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\Backend.csproj": {
+    "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\API\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\API\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\API\\Backend.csproj",
         "packagesPath": "C:\\Users\\timsh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\timsh\\Documents\\Code\\BoydPortfolio\\Timothy-Boyd-Portfolio\\gamesdashboard\\Backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\timsh\\AppData\\Roaming\\NuGet\\NuGet.Config"

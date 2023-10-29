@@ -4,7 +4,7 @@ const navListData = [
     target: 'home',
     name: 'Home',
     icon: 'bi-house-heart',
-    active: true
+    active: false
 
 },
 
@@ -34,6 +34,7 @@ const navListData = [
     active: false
 
 }
+
 
 ];
 

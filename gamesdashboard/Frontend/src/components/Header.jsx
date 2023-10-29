@@ -4,7 +4,7 @@ import './header.css';
 import userImage from '../images/testAvi.jpg';
 
 function Header({toggleActive}) {
-   const {library} = useContext(AppContext)
+   const {library, bag, userName} = useContext(AppContext)
   return (
     <header>
         <a href="#" className="menu" onClick={toggleActive}><i className="bi bi-sliders"></i></a>
@@ -15,14 +15,14 @@ function Header({toggleActive}) {
                 </a>
             <a href="#" className="icon">
                 <i className="bi bi-bag-fill"></i>
-                <span className="bag"></span>
+                <span className="bag">{bag.length}</span>
             </a>
             <div className="avatar">
                 <a href="#">
-                    <img src={userImage} alt="User Image" />
+                    <img src={userImage} alt="UserProfileIcon" />
                 </a>
                 <div className="user">
-                    <span> User Name</span> {/* Update this to use dynamic username and user info once database is created and user authentication is set up*/}
+                    <span>{userName}</span> {/* Update this to use dynamic username and user info once database is created and user authentication is set up*/}
                     <a href="">View Profile</a>
                 </div>
             </div>

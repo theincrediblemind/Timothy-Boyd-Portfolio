@@ -13,9 +13,10 @@ function App() {
 
   const [library, setLibrary] = useState([]);
   const [bag, setBag] = useState([])
+  const [userName, setuserName] = useState("")
   return (
     <>
-      <AppContext.Provider value={{library, setLibrary, bag, setBag}}>
+      <AppContext.Provider value={{library, setLibrary, bag, setBag, userName, setuserName}}>
         <Main/>
       </AppContext.Provider>
     </>

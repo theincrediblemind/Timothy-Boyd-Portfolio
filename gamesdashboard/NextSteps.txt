@@ -1,4 +1,5 @@
-# Add User Authentication - use Java
+# Add capabilities for users to set following settings: color scheme, profile picture 
+# Add age rating to games
 # Don't show games with age rating to users younger
 # Add checkout capabilities
 # Add a My games section for purchased games

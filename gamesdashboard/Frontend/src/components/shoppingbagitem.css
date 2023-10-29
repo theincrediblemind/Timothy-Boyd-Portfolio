@@ -1,0 +1,27 @@
+.shoppingBagItem {
+    margin-bottom: 20px;
+}
+
+.shoppingBagItem tr {
+    margin-bottom: 20px !important;
+}
+
+.shoppingBagItem td,
+.shoppingBagItem th {
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.shoppingBagItem a {
+    color: #ffffff;
+    font-size: 1.6rem;
+}
+
+.shoppingBagItem img {
+
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    object-position: center;
+}

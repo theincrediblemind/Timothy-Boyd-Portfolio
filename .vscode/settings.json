@@ -1,0 +1,7 @@
+{
+    "maven.terminal.useJavaHome": true,
+    "java.import.gradle.java.home": "C:\\Program Files\\Java\\jre-1.8",
+    "java.jdt.ls.java.home": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.0.35-hotspot",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic",
+}
